@@ -32,13 +32,17 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
 
-  resources :devices, only: [:create, :index, :show]
+  resources :devices, only: [:create, :index, :show] do
+    resources :movements, only: [:create]
+  end
 
   resources :trusted_applications, only: [:create]
 
   resources :apps, only: [:create, :index, :show]
 
   resources :accounts, only: [:create, :index]
+
+  resources :movements, only: [:index, :show]
 
   # Example resource route with more complex sub-resources:
   #   resources :products do

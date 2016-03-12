@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312041539) do
+ActiveRecord::Schema.define(version: 20160312042754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20160312041539) do
     t.string   "serial",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.decimal  "price",      precision: 16, scale: 2, null: false
+    t.string   "item",                                null: false
+    t.string   "nfc_tag",                             null: false
+    t.integer  "account_id",                          null: false
+    t.integer  "app_id",                              null: false
+    t.integer  "device_id",                           null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "trusted_applications", force: :cascade do |t|

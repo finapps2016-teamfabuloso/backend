@@ -1,6 +1,7 @@
 class Device < ActiveRecord::Base
   has_many :trusted_applications
   has_many :apps, through: :trusted_applications
+  has_many :movements
 
   validates_presence_of :platform, :serial, :category
 

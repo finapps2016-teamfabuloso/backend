@@ -23,7 +23,6 @@ Base URI: https://finapps2016-backend.herokuapp.com
 * [Movement Methods](#movement-methods)
 	* [List](#movement-list)
 	* [Create] (#movement-create)
-	* [Show] (#movement-show)
 	
 ## <a name="device-methods"></a>Device Methods
 
@@ -292,4 +291,91 @@ Example:
     }
   ]
 }
+```
+
+	
+## <a name="movement-methods"></a>Movement Methods
+
+### <a name="movement-list"></a>List all movements
+
+#### GET `/movements`
+
+
+**Response**
+`Status Code: 200 - OK`
+    
+```json
+{
+  "success": "true",
+  "movements": [
+    {
+      "id": 1,
+      "price": "25.99",
+      "item": "Fancy Pants",
+      "nfc_tag": "EXAMPLE_TAG",
+      "account_id": 1,
+      "device_id": 1,
+      "app_id": 1,
+      "created_at": "2016-03-12T04:48:52.578Z"
+    },
+    {
+      "id": 2,
+      "price": "25.99",
+      "item": "Fancy Pants",
+      "nfc_tag": "EXAMPLE_TAG",
+      "account_id": 1,
+      "device_id": 1,
+      "app_id": 1,
+      "created_at": "2016-03-12T04:50:49.793Z"
+    }
+  ]
+}
+```
+
+### <a name="movement-create"></a>Create a Movement
+
+#### POST `/devices/:device_id/movements`
+
+**Request**
+
+| Form Params        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| price | decimal | ​*(Required)*​ price of purchase |
+| item | string | ​*(Required)*​ name of item purchased |
+| nfc_tag | string | ​*(Required)*​ unique identifier for the item purchased |
+| account_id| integer | *(Required)* existing account id |
+| app_id| integer | *(Required)* existing application id |
+| device__id| integer | *(Required)* existing device id |
+
+
+Example:
+```json
+{
+  "movement": {
+    "price": 35.00,
+    "item": "Fancy Pants",
+    "nfc_tag_": "EXAMPLE TAG",
+    "account_id": 1,
+    "app_id": 1,
+    "device_id: 1
+   }
+}     
+```
+
+**Response**
+`Status Code: 201 - Created`
+    
+```json
+{
+  "success": "true",
+  "movement": {
+    "id": 3,
+    "price": "5.99",
+    "item": "Fantastic Hat",
+    "nfc_tag": "EXAMPLE_TAG",
+    "account_id": 1,
+    "app_id": 1,
+    "device_id": 2
+  }
+}   
 ```
