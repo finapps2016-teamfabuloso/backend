@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   resources :apps, only: [:create, :index, :show]
 
+  resources :accounts, only: [:create, :index]
+
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments

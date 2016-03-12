@@ -20,8 +20,6 @@ Base URI: https://finapps2016-backend.herokuapp.com
 	* [Create] (#trusted-app-create)
 * [Account Methods](#account-methods)
 	* [List](#account-list)
-	* [Create] (#account-create)
-	* [Show] (#account-show)
 * [Movement Methods](#movement-methods)
 	* [List](#movement-list)
 	* [Create] (#movement-create)
@@ -259,5 +257,39 @@ Example:
     "device_id": 3,
     "app_id": 3
   }
+}
+```
+
+## <a name="account-methods"></a>Account Methods
+
+### <a name="account-list"></a>List all accounts
+
+#### GET `/accounts`
+
+
+**Response**
+`Status Code: 200 - OK`
+    
+
+```json
+{
+  "success": "true",
+  "accounts": [
+    {
+      "id": 1,
+      "name": "Visa",
+      "ccn": "XXXX-XXXX-XXXX-3432"
+    },
+    {
+      "id": 2,
+      "name": "Discover",
+      "ccn": "XXXX-XXXX-XXXX-2034"
+    },
+    {
+      "id": 3,
+      "name": "Paypal",
+      "ccn": "XXXXXXXX3311"
+    }
+  ]
 }
 ```
