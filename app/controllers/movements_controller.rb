@@ -1,5 +1,6 @@
 class MovementsController < ApplicationController
 
+
   def create
     @movement = Movement.new(movement_params)
     if @movement.save
@@ -16,6 +17,9 @@ class MovementsController < ApplicationController
 
   private
   def movement_params
-    params.require(:movement).permit(:price,:item,:nfc_tag,:account_id,:app_id,:device_id)
+    custom_data = params.require(:custom_data).permit!
+    custom_data.delete!("\n") if custom_data.include? "\n"
+    parsed_data = custom_data.is_a?(String) ? JSON.parse(custom_data) : custom_data
+    parsed_data["movement"]
   end
 end
