@@ -42,19 +42,23 @@ Base URI: https://finapps2016-backend.herokuapp.com
       "id": 1,
       "platform": "android",
       "category": "mobile",
-      "serial": "3489399843298sdfds4723",
+      "serial": "IMIEXXXXXXXXXXXXX4432",
       "apps": [
         {
           "id": 1,
-          "name": "Kroger"
+          "name": "Global Payments"
         },
         {
           "id": 2,
-          "name": "Target"
+          "name": "Kroger"
         },
         {
           "id": 3,
           "name": "Nordstrom Rack"
+        },
+        {
+          "id": 4,
+          "name": "Sephora"
         }
       ]
     },
@@ -62,28 +66,52 @@ Base URI: https://finapps2016-backend.herokuapp.com
       "id": 2,
       "platform": "ios",
       "category": "wearable",
-      "serial": "1034234987239834",
+      "serial": "IMIEXXXXXXXXXXXXX44212",
       "apps": [
+        {
+          "id": 1,
+          "name": "Global Payments"
+        },
+        {
+          "id": 2,
+          "name": "Kroger"
+        },
         {
           "id": 3,
           "name": "Nordstrom Rack"
+        },
+        {
+          "id": 4,
+          "name": "Sephora"
         }
       ]
     },
     {
       "id": 3,
       "platform": "ios",
-      "category": "mobile",
-      "serial": "9398475827687223",
+      "category": "tablet",
+      "serial": "IMIEXXXXXXXXXXXXX9932",
       "apps": [
+        {
+          "id": 1,
+          "name": "Global Payments"
+        },
+        {
+          "id": 2,
+          "name": "Kroger"
+        },
         {
           "id": 3,
           "name": "Nordstrom Rack"
+        },
+        {
+          "id": 4,
+          "name": "Sephora"
         }
       ]
     }
   ]
-}   
+}
 ```
 
 ### <a name="device-show"></a>Show a Device
@@ -100,9 +128,9 @@ Base URI: https://finapps2016-backend.herokuapp.com
     "id": 1,
     "platform": "android",
     "category": "mobile",
-    "serial": "3489399843298sdfds4723"
+    "serial": "IMIEXXXXXXXXXXXXX4432"
   }
-}     
+}  
 ```
 
 ### <a name="device-create"></a>Create a Device
@@ -137,10 +165,10 @@ Example:
   "device": {
     "id": 1,
     "platform": "android",
-    "type": "mobile",
-    "serial": "3489399843298sdfds4723"
+    "category": "mobile",
+    "serial": "IMIEXXXXXXXXXXXXX4432"
   }
-}     
+}  
 ```
 
 ## <a name="apps-methods"></a>Application Methods
@@ -159,15 +187,19 @@ Example:
   "apps": [
     {
       "id": 1,
-      "name": "Kroger"
+      "name": "Global Payments"
     },
     {
       "id": 2,
-      "name": "Target"
+      "name": "Kroger"
     },
     {
       "id": 3,
       "name": "Nordstrom Rack"
+    },
+    {
+      "id": 4,
+      "name": "Sephora"
     }
   ]
 }
@@ -183,14 +215,14 @@ Example:
 ```json
 {
   "success": "true",
-  "app": {
-    "id": 1,
-    "name": "Kroger"
+  "apps": {
+    "id": 5,
+    "name": "Target"
   }
 }
 ```
 
-### <a name="app-create"></a>Create an application
+### <a name="app-create"></a>Create an application/merchant
 
 #### POST `/apps`
 
@@ -198,7 +230,7 @@ Example:
 
 | Form Params        | Type           | Description  |
 | ------------- |:-------------:|:----- |
-| name | string | ​*(Required)*​ Name of application |
+| name | string | ​*(Required)*​ Name of merchant or application |
 
 Example:
 ```json
@@ -215,16 +247,16 @@ Example:
 ```json
 {
   "success": "true",
-  "app": {
-    "id": 1,
-    "name": "Global Payments App"
+  "apps": {
+    "id": 5,
+    "name": "Target"
   }
 }
 ```
 
 ## <a name="trusted-app-methods"></a>Device Methods
 
-### <a name="trusted-app-create"></a>Link an existing device to an applciation
+### <a name="trusted-app-create"></a>Link an existing device to an applciation or merchant
 
 #### POST `/trusted_applications`
 
@@ -234,7 +266,7 @@ Example:
 | Form Params        | Type           | Description  |
 | ------------- |:-------------:|:----- |
 | device_id | integer | ​*(Required)*​ Existing :id of device|
-| app_id | integer | ​*(Required)*​ Existing :id of app |
+| app_id | integer | ​*(Required)*​ Existing :id of app/merchant |
 
 Example:
 ```json
@@ -276,18 +308,21 @@ Example:
   "accounts": [
     {
       "id": 1,
-      "name": "Visa",
-      "ccn": "XXXX-XXXX-XXXX-3432"
+      "name": "Bitcoin",
+      "image_url": "http://localhost:3000/payment_processors/bitcoin.png",
+      "ccn": "XXXXXXXXXXXXXXXXXXXXUgmE"
     },
     {
       "id": 2,
-      "name": "Discover",
-      "ccn": "XXXX-XXXX-XXXX-2034"
+      "name": "Paypal",
+      "image_url": "http://localhost:3000/payment_processors/paypal.png",
+      "ccn": "kishan@gmail.com"
     },
     {
       "id": 3,
-      "name": "Paypal",
-      "ccn": "XXXXXXXX3311"
+      "name": "Visa",
+      "image_url": "http://localhost:3000/payment_processors/visa.png",
+      "ccn": "XXXX-XXXX-XXXX-3222"
     }
   ]
 }
@@ -310,23 +345,26 @@ Example:
   "movements": [
     {
       "id": 1,
-      "price": "25.99",
-      "item": "Fancy Pants",
-      "nfc_tag": "EXAMPLE_TAG",
-      "account_id": 1,
-      "device_id": 1,
-      "app_id": 1,
-      "created_at": "2016-03-12T04:48:52.578Z"
-    },
-    {
-      "id": 2,
-      "price": "25.99",
-      "item": "Fancy Pants",
-      "nfc_tag": "EXAMPLE_TAG",
-      "account_id": 1,
-      "device_id": 1,
-      "app_id": 1,
-      "created_at": "2016-03-12T04:50:49.793Z"
+      "price": "8.49",
+      "item": "Delicious Apples",
+      "nfc_tag": "EXAMPLE_TAG_4",
+      "account": {
+        "id": 1,
+        "name": "Bitcoin",
+        "image_url": "payment_processors/bitcoin.png",
+        "number": "XXXXXXXXXXXXXXXXXXXXUgmE"
+      },
+      "device": {
+        "id": 2,
+        "platform": "ios",
+        "category": "wearable"
+      },
+      "merchant": {
+        "app_id": 3,
+        "name": "Nordstrom Rack"
+      },
+      "date": "03-12-2016",
+      "time": "10:34:35"
     }
   ]
 }

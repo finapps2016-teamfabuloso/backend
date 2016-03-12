@@ -16,6 +16,6 @@ class AccountsController < ApplicationController
 
   private
   def account_params
-    params.require(:account).permit(:name, :ccn)
+    params.require(:account).permit(:payment_processor_id, :ccn)
   end
 end

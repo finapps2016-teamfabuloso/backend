@@ -6,7 +6,8 @@ json.movements do json.array! @movements.each do |movement|
   json.nfc_tag movement.nfc_tag
   json.account do
     json.id movement.account.id
-    json.name movement.account.name
+    json.name movement.account.payment_processor.name
+    json.image_url movement.account.payment_processor.image_url
     json.number movement.account.ccn
   end
   json.device do
