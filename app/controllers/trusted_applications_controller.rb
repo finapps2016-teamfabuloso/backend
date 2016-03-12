@@ -7,8 +7,11 @@ class TrustedApplicationsController < ApplicationController
 
   def create
     @trusted_app = TrustedApplication.new(trusted_app_params)
-    @trusted_app.save
-    render 'create.json.jbuilder', status: :created
+    if @trusted_app.save
+      render 'create.json.jbuilder', status: :created
+    else
+      render json: {errors: @trusted_app.errors.messages }
+    end
   end
 
   # def show

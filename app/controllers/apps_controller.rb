@@ -7,8 +7,11 @@ class AppsController < ApplicationController
 
   def create
     @app = App.new(app_params)
-    @app.save
-    render 'create.json.jbuilder', status: :created
+    if @app.save
+      render 'create.json.jbuilder', status: :created
+    else
+      render json: {errors: @app.errors.messages }
+    end
   end
 
   def show
