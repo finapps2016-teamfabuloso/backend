@@ -1,4 +1,4 @@
-def PaymentProessorsController < ApplicationController
+def PaymentProcessorsController < ApplicationController
 
   def index
     @payment_processors = PaymentProcessor.all
