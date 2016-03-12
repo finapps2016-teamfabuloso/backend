@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma'
 
-gem 'active_model_serializers', :github => 'rails-api/active_model_serializers', :ref => '55210ab61faabe5bf8e86bb7e611e9044a74174f'
+gem 'omniauth-coinbase', '~> 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
