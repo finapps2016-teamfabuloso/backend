@@ -1,7 +1,7 @@
 class AppsController < ApplicationController
 
   def index
-    @apps = Apps.all
+    @apps = App.all
     render 'index.json.jbuilder', status: :ok
   end
 
