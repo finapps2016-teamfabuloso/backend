@@ -18,6 +18,6 @@ class TrustedApplicationsController < ApplicationController
 
   private
   def trusted_app_params
-    params.require(:application).permit(:name)
+    params.require(:trusted_application).permit(:name)
   end
 end

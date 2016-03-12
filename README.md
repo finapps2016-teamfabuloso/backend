@@ -114,5 +114,79 @@ Example:
 }     
 ```
 
+## <a name="application-methods"></a>Trusted Application Methods
+
+### <a name="application-list"></a>List all trusted applications
+
+#### GET `/trusted_applications`
+
+
+**Response**
+`Status Code: 200 - OK`
+    
+```json
+{
+  "success": "true",
+  "trusted_applications": [
+    {
+      "id": 1,
+      "name": "Global Payments App"
+    }
+  ]
+}   
+```
+
+### <a name="application-show"></a>Show a trusted application
+
+#### GET `/trusted_applications/:id`
+
+**Response**
+`Status Code: 200 - OK`
+    
+```json
+{
+  "success": "true",
+  "trusted_application": [
+    {
+      "id": 1,
+      "name": "Global Payments App"
+    }
+  ]
+}
+```
+
+### <a name="application-create"></a>Create a trusted application
+
+#### POST `/trusted_applications`
+
+**Request**
+
+| Form Params        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| name | string | ​*(Required)*​ Name of application |
+
+Example:
+```json
+{
+  "trusted_application": {
+    "name": "Global Payments App"
+  }
+}     
+```
+
+**Response**
+`Status Code: 201 - Created`
+    
+```json
+{
+  "success": "true",
+  "trusted_application": {
+    "id": 2,
+    "name": "Target"
+  }
+} 
+```
+
+
 
 
