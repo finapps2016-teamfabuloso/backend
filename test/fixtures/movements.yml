@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1.5
+  item: MyString
+  nfc_tag: MyString
+  account_id: 1
+  app_id: 1
+  device_id: 1
+
+two:
+  price: 1.5
+  item: MyString
+  nfc_tag: MyString
+  account_id: 1
+  app_id: 1
+  device_id: 1
