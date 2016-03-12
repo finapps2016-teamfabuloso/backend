@@ -4,9 +4,20 @@ json.movements do json.array! @movements.each do |movement|
   json.price movement.price
   json.item movement.item
   json.nfc_tag movement.nfc_tag
-  json.account_id movement.account_id
-  json.device_id movement.device_id
-  json.app_id movement.app_id
+  json.account do
+    json.id movement.account.id
+    json.name movement.account.name
+    json.number movement.account.ccn
+  end
+  json.device do
+    json.id movement.device.id
+    json.platform movement.device.platform
+    json.category movement.device.category
+  end
+  json.merchant do
+    json.app_id movement.app.id
+    json.name movement.app.name
+  end
   json.created_at movement.created_at
 end
 end
