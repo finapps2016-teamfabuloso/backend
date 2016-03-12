@@ -12,6 +12,12 @@ Base URI: https://finapps2016-backend.herokuapp.com
 	* [List](#device-list)
 	* [Create] (#device-create)
 	* [Show] (#device-show)
+* [Applications Methods](#app-methods)
+	* [List](#app-list)
+	* [Create] (#app-create)
+	* [Show] (#app-show)
+* [Trusted Application Methods](#trusted-app-methods)
+	* [Create] (#trusted-app-create)
 * [Account Methods](#account-methods)
 	* [List](#account-list)
 	* [Create] (#account-create)
@@ -39,22 +45,48 @@ Base URI: https://finapps2016-backend.herokuapp.com
       "id": 1,
       "platform": "android",
       "category": "mobile",
-      "serial": "3489399843298sdfds4723"
+      "serial": "3489399843298sdfds4723",
+      "apps": [
+        {
+          "id": 1,
+          "name": "Kroger"
+        },
+        {
+          "id": 2,
+          "name": "Target"
+        },
+        {
+          "id": 3,
+          "name": "Nordstrom Rack"
+        }
+      ]
     },
     {
       "id": 2,
       "platform": "ios",
       "category": "wearable",
-      "serial": "1034234987239834"
+      "serial": "1034234987239834",
+      "apps": [
+        {
+          "id": 3,
+          "name": "Nordstrom Rack"
+        }
+      ]
     },
     {
       "id": 3,
       "platform": "ios",
       "category": "mobile",
-      "serial": "9398475827687223"
+      "serial": "9398475827687223",
+      "apps": [
+        {
+          "id": 3,
+          "name": "Nordstrom Rack"
+        }
+      ]
     }
   ]
-}        
+}   
 ```
 
 ### <a name="device-show"></a>Show a Device
@@ -114,31 +146,12 @@ Example:
 }     
 ```
 
-## <a name="application-methods"></a>Trusted Application Methods
+## <a name="apps-methods"></a>Application Methods
 
-### <a name="application-list"></a>List all trusted applications
+### <a name="apps-list"></a>List all applications
 
-#### GET `/trusted_applications`
+#### GET `/apps`
 
-
-**Response**
-`Status Code: 200 - OK`
-    
-```json
-{
-  "success": "true",
-  "trusted_applications": [
-    {
-      "id": 1,
-      "name": "Global Payments App"
-    }
-  ]
-}   
-```
-
-### <a name="application-show"></a>Show a trusted application
-
-#### GET `/trusted_applications/:id`
 
 **Response**
 `Status Code: 200 - OK`
@@ -146,18 +159,43 @@ Example:
 ```json
 {
   "success": "true",
-  "trusted_application": [
+  "apps": [
     {
       "id": 1,
-      "name": "Global Payments App"
+      "name": "Kroger"
+    },
+    {
+      "id": 2,
+      "name": "Target"
+    },
+    {
+      "id": 3,
+      "name": "Nordstrom Rack"
     }
   ]
 }
 ```
 
-### <a name="application-create"></a>Create a trusted application
+### <a name="apps-show"></a>Show an application
 
-#### POST `/trusted_applications`
+#### GET `/apps/:id`
+
+**Response**
+`Status Code: 200 - OK`
+    
+```json
+{
+  "success": "true",
+  "app": {
+    "id": 1,
+    "name": "Kroger"
+  }
+}
+```
+
+### <a name="app-create"></a>Create an application
+
+#### POST `/apps`
 
 **Request**
 
@@ -168,7 +206,7 @@ Example:
 Example:
 ```json
 {
-  "trusted_application": {
+  "app": {
     "name": "Global Payments App"
   }
 }     
@@ -180,13 +218,46 @@ Example:
 ```json
 {
   "success": "true",
-  "trusted_application": {
-    "id": 2,
-    "name": "Target"
+  "app": {
+    "id": 1,
+    "name": "Global Payments App"
   }
-} 
+}
 ```
 
+## <a name="trusted-app-methods"></a>Device Methods
+
+### <a name="trusted-app-create"></a>Link an existing device to an applciation
+
+#### POST `/trusted_applications`
 
 
+**Request**
 
+| Form Params        | Type           | Description  |
+| ------------- |:-------------:|:----- |
+| device_id | integer | ​*(Required)*​ Existing :id of device|
+| app_id | integer | ​*(Required)*​ Existing :id of app |
+
+Example:
+```json
+{
+  "trusted_application": {
+    "device_id": 1,
+    "app_id": 1
+  }
+}     
+```
+
+**Response**
+
+```json
+{
+  "success": "true",
+  "trusted_application": {
+    "id": 8,
+    "device_id": 3,
+    "app_id": 3
+  }
+}
+```
