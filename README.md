@@ -81,6 +81,7 @@ Base URI: https://finapps2016-backend.herokuapp.com
 #### POST `/devices`
 
 **Request**
+
 | Form Params        | Type           | Description  |
 | ------------- |:-------------:|:----- |
 | platform | string | ​*(Required)*​ ios or android |
@@ -99,7 +100,7 @@ Example:
 ```
 
 **Response**
-`Status Code: 200 - OK`
+`Status Code: 201 - Created`
     
 ```json
 {
