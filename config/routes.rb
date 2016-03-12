@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   resources :devices, only: [:create, :index, :show]
 
-  resources :trusted_applications, only: [:create, :index, :show]
+  resources :trusted_applications, only: [:create]
+
+  resources :apps, only: [:create, :index, :show]
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
