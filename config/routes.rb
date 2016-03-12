@@ -44,6 +44,8 @@ Rails.application.routes.draw do
 
   resources :movements, only: [:index, :show]
 
+  resources :payment_processors, only: [:index]
+
   # Example resource route with more complex sub-resources:
   #   resources :products do
   #     resources :comments
