@@ -18,6 +18,7 @@ json.movements do json.array! @movements.each do |movement|
     json.app_id movement.app.id
     json.name movement.app.name
   end
-  json.created_at movement.created_at
+  json.date movement.created_at.in_time_zone('EST').strftime("%m-%d-%Y")
+  json.time movement.created_at.in_time_zone('EST').strftime("%T")
 end
 end
