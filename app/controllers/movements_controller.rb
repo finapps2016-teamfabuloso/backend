@@ -20,6 +20,7 @@ class MovementsController < ApplicationController
     custom_data = params['custom_data']
     custom_data.delete!("\n") if custom_data.include? "\n"
     parsed_data = custom_data.is_a?(String) ? JSON.parse(custom_data) : custom_data
-    parsed_data.require(:movement).permit(:price, :item, :nfc_tag, :account_id, :app_id, :device_id)
+    returned_data = ActionController::Parameters.new(parsed_data)
+    returned_data.require(:movement).permit(:price, :item, :nfc_tag, :account_id, :app_id, :device_id)
   end
 end
