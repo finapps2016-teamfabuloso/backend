@@ -1,3 +1,4 @@
 class TrustedApplication < ActiveRecord::Base
-  validates_presence_of :name
+  belongs_to :app
+  belongs_to :device
 end
